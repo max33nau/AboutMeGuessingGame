@@ -1,12 +1,11 @@
-*{
+* {
   background: #191970;
   color: yellow;
+  }
 
-}
-
-body{
+body {
   font-family: sans-serif;
-}
+  }
 
 #MainHeading {
   display: block;
@@ -18,32 +17,27 @@ body{
   font-family: fantasy;
   max-width: 50%;
   margin: 20px auto 50px;
+  }
 
-}
-
-#FirstParagraph{
-    display:block;
-    font-size: 1.5em;
-    font-family: "Comic Sans MS", fantasy, sans-serif;
-    margin: 0px auto 0px;
-    text-align: center;
-    max-width: 100%
-
-}
+#FirstParagraph {
+  display:block;
+  font-size: 1.5em;
+  font-family: "Comic Sans MS", fantasy, sans-serif;
+  margin: 0px auto 0px;
+  text-align: center;
+  max-width: 100%
+  }
 
 .buttonstart {
   font-family: fantasy;
   display: block;
   margin: 50px auto 30px;
   font-size: 30px;
-
-
-}
+  }
 
 #mainphoto {
   display: block;
   max-width: 300px;
   margin: 50px auto 50px;
   border-radius: 20px;
-
-}
+ }
