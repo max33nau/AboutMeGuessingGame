@@ -8,6 +8,8 @@ body{
   font-family: sans-serif;
 }
 
+.alerts { text-align: center; }
+
 #MainHeading {
   display: block;
   text-align: center;
