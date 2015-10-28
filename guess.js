@@ -18,14 +18,9 @@ else {
   NumberOfQuestions=6;
   counter=6;
 }
+  
 
-
-
-/* The below while loop stays in while loop until all questions have been answered or         user presses cancel. */
-while(NumberOfQuestions < 4){
-
-  /* The below code does the same if else statement for the 3 questions. Asks a question, logs it to the console and tells the user if they got the answer correct or not. If they did get it correct, add 1 to counter. If the user enters something that is not a string, it will ask the question again. If the user presses cancel or enters a empty string then it will break out of the while loop.  */
-  if(NumberOfQuestions === 1) {
+function question1() {
     var answer1 = prompt("Question 1: Have I ever worked at Jamba Juice?");
     console.log(answer1)
     if (answer1.toLowerCase() === "yes" || answer1.toLowerCase() === "y"){
@@ -48,9 +43,11 @@ while(NumberOfQuestions < 4){
       alert("That is not a valid answer. Please enter yes or no");
       NumberOfQuestions = 1;
     }
-  }
 
-  if (NumberOfQuestions === 2){
+    return true;
+}
+
+function question2() {
     var answer2 = prompt("Do I know the extension of pi to 50 decimal places?");
     console.log(answer2)
     if (answer2.toLowerCase() === "yes" || answer2.toLowerCase() === "y"){
@@ -71,9 +68,11 @@ while(NumberOfQuestions < 4){
       alert("That is not a valid answer. Please enter yes or no");
       NumberOfQuestions = 2;
     }
-  }
 
-  if (NumberOfQuestions === 3){
+    return true;
+}
+
+function question3() {
     var answer3 = prompt("Is there a video of me falling on my face while dunking a basketball on YouTube?");
     console.log(answer3)
     if (answer3.toLowerCase() === "yes" || answer3.toLowerCase() === "y"){
@@ -96,9 +95,28 @@ while(NumberOfQuestions < 4){
       alert("That is not a valid answer. Please enter yes or no");
       NumberOfQuestions = 3;
     }
-  }
+
+    return true;
+}
 
 
+/* The below while loop stays in while loop until all questions have been answered or         user presses cancel. */
+while(NumberOfQuestions < 4){
+
+  /* The below code does the same if else statement for the 3 questions. Asks a question, logs it to the console and tells the user if they got the answer correct or not. If they did get it correct, add 1 to counter. If the user enters something that is not a string, it will ask the question again. If the user presses cancel or enters a empty string then it will break out of the while loop.  */
+    if(NumberOfQuestions === 1) {
+	question1();
+    }
+
+    if (NumberOfQuestions === 2){
+	question2();
+    }
+    
+    if (NumberOfQuestions === 3){
+	question3();
+    }
+    
+    
 }
 
 /*The below if-else statements thanks for user for playing and displays their name along with saying how many answers they got correct out of the 3 questions. */
