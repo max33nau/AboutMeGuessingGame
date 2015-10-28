@@ -8,14 +8,14 @@ function startquiz() {
   " your name?" )
 
   if ( isNaN(name) ) {
-    NumberOfQuestions =1;
+    NumberOfQuestions = 1;
     counter = 0;
   } else if ( name === "" ) {
-    NumberOfQuestions = 5;
-    counter=5;
+    NumberOfQuestions = 4;
+    counter = 4;
   } else {
-    NumberOfQuestions=6;
-    counter=6;
+    NumberOfQuestions = 5;
+    counter = 5;
   }
 /* The below while loop stays in while loop until all questions have been
 answered or user presses cancel. */
@@ -35,12 +35,12 @@ break out of the while loop.  */
          counter++;
          alert( "Correct, I was a pro at making smoothies." );
       } else if ( answer1.toLowerCase() === "no" || answer1.toLowerCase() === "n" ) {
-         NumberOfQuestions += 1;
+         NumberOfQuestions++;
          alert( "Sorry, the correct answer was yes. I am a pro when it comes to" +
          " making smoothies." );
       } else if ( answer1 === "" ) {
-         NumberOfQuestions = 5;
-         counter = 5;
+         NumberOfQuestions = 4;
+         counter = 4;
       } else {
          alert( "That is not a valid answer. Please enter yes or no" );
          NumberOfQuestions = 1;
@@ -60,8 +60,8 @@ break out of the while loop.  */
          counter++;
          alert("Correct, 3.1415 is about as far as I can get. ");
       } else if ( answer2 === "" ) {
-         NumberOfQuestions = 5;
-         counter = 5;
+         NumberOfQuestions = 4;
+         counter = 4;
       } else {
          alert( "That is not a valid answer. Please enter yes or no" );
          NumberOfQuestions = 2;
@@ -83,36 +83,39 @@ break out of the while loop.  */
          alert( "Unfortunately the answer is yes. If you click on the image" +
          " below you can watch the video. Don't worry I was okay." );
       } else if( answer3 === "" ) {
-         NumberOfQuestions = 5;
-         counter = 5;
+         NumberOfQuestions = 4;
+         counter = 4;
       } else {
         alert( "That is not a valid answer. Please enter yes or no" );
         NumberOfQuestions = 3;
       }
      }
    }
-/*The below if-else statements thanks for user for playing and displays their
+/*The below switch case statements thanks for user for playing and displays their
 name along with saying how many answers they got correct out of the 3 questions.
  */
- if( counter === 0 ) {
-    alert( "Thanks for playing the quiz " + name + ", you got " + counter +
-    " out of 3 questions correct." )
-   } else if (counter === 1) {
-    alert( "Thanks for playing the quiz " + name + ", you got " + counter +
-    " out of 3 questions correct." )
-   } else if ( counter === 2 ) {
-    alert( "Thanks for playing the quiz " + name + ", you got " + counter +
-    " out of 3 questions correct." )
-   } else if ( counter === 3 ) {
-    alert( "Thanks for playing the quiz " + name + ", you got " + counter +
-    " out of 3 questions correct." )
-   } else if( counter === 5 ) {
-    alert( "Looks like you have entered a empty string or hit cancel during" +
-    " the quiz. If you would like to start the quiz over please hit the start" +
-    " quiz button again." )
-   } else if( counter === 6 ) {
-    alert("That is not a valid name, please hit the start quiz button again.")
-   } else {
-    alert( "Something is wrong with program. Please Try Again." )
-   }
-}
+  switch ( counter ) {
+    case 0 : alert( "Thanks for playing the quiz " + name + ", you got " +
+             counter + " out of 3 questions correct." );
+             break;
+    case 1 : alert( "Thanks for playing the quiz " + name + ", you got " +
+             counter + " out of 3 questions correct." );
+             break;
+    case 2 : alert( "Thanks for playing the quiz " + name + ", you got " +
+             counter + " out of 3 questions correct." );
+             break;
+    case 3 : alert( "Thanks for playing the quiz " + name + ", you got " +
+             counter + " out of 3 questions correct." );
+             break;
+    case 4 : alert( "Looks like you have entered a empty string or hit cancel" +
+             " during the quiz. If you would like to start the quiz over please" +
+             " hit the start quiz button again." );
+             break;
+    case 5 : alert( "That is not a valid name, please hit the start quiz" +
+             " button again." );
+             break;
+    default : alert( "Something is wrong with program. Please Try Again." );
+             break;
+  }
+
+ }
