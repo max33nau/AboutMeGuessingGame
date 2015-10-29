@@ -29,11 +29,17 @@ body {
   }
 
 .buttonstart {
+  background-color: lightgreen;
   font-family: fantasy;
   display: block;
   margin: 50px auto 30px;
   font-size: 30px;
+  color: black;
   }
+
+.alerts {
+  text-align: center;
+}
 
 #mainphoto {
   display: block;
