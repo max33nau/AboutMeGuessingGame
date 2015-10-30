@@ -22,18 +22,17 @@ function startquiz() {
 
                          "Question 3: Have I every fallen on my face when dunking a basketball?" ];
     var NumberOfQuestions = questionAsked.length;
-    var AlertStringCorrectAnswer = [ "Correct, I was a pro at making smoothies.",
-
-                                     "Correct, 3.1415 is about as far as I can get. ",
-
-                                     "Correct, if you click on the image below you can " +
-                                           "watch the video. Don't worry I was okay." ];
-    var AlertStringWrongAnswer = [ "Sorry the correct answer was yes. " +
+    var imageCorrect = "<img class=\"correct\" src=\"images/green.jpg\" \\>";
+    var imageIncorrect = "<img class=\"incorrect\" src=\"images/red.jpg\" \\>";
+    var AlertStringCorrectAnswer = [ imageCorrect + "  Correct, I was a pro at making smoothies.",
+                                     imageCorrect + "  Correct, 3.1415 is about as far as I can get. ",
+                                     imageCorrect + "  Correct, if you click on the image below you can " +
+                                     "watch the video. Don't worry I was okay." ];
+    
+    var AlertStringWrongAnswer = [ imageIncorrect + "  Sorry the correct answer was yes. " +
                                    "I am a pro when it comes to making smoothies.",
-
-                                   "I don't actually, 3.1415 is as far as I can get.",
-
-                                   "Unfortunately the answer is yes. If you click on " +
+                                   imageIncorrect + "  I don't actually, 3.1415 is as far as I can get.",
+                                   imageIncorrect + "  Unfortunately the answer is yes. If you click on " +
                             		   "the image below you can watch the video. Don't " +
                             		   "worry I was okay." ];
     var NotValidAnswer = "That is not a valid answer. Please enter yes or no.";
