@@ -1,160 +1,92 @@
 /* function that starts when the buttom in the HTML code is clicked */
 function startquiz() {
-    var statusSwitch;
-    var counter;
-    var answerKey = ["yes", "no", "yes"]
-    
+    var currentQuestion;
+    var NumberOfQuestionsCorrect=0;
+    var UserAnswer= [];
+    var CorrectAnswer = [ "yes",
+                          "no",
+                          "yes" ];
+    var AbreviatedCorrectAnswer = [ "y",
+                                    "n",
+                                    "y"];
+    var WrongAnswer = [ "no",
+                        "yes",
+                        "no"];
+    var AbreviatedWrongAnswer = [ "n",
+                                  "y",
+                                  "n"];
+    var questionAsked = [ "Question 1: Have I ever worked at Jamba Juice?",
+
+                         "Question 2: Do I know the extension of pi to 50 " +
+                         "decimal places?",
+
+                         "Question 3: Have I every fallen on my face when dunking a basketball?" ];
+    var NumberOfQuestions = questionAsked.length;
+    var AlertStringCorrectAnswer = [ "Correct, I was a pro at making smoothies.",
+
+                                     "Correct, 3.1415 is about as far as I can get. ",
+
+                                     "Correct, if you click on the image below you can " +
+                                           "watch the video. Don't worry I was okay." ];
+    var AlertStringWrongAnswer = [ "Sorry the correct answer was yes. " +
+                                   "I am a pro when it comes to making smoothies.",
+
+                                   "I don't actually, 3.1415 is as far as I can get.",
+
+                                   "Unfortunately the answer is yes. If you click on " +
+                            		   "the image below you can watch the video. Don't " +
+                            		   "worry I was okay." ];
+    var NotValidAnswer = "That is not a valid answer. Please enter yes or no.";
+    var AlertNull = "Looks like you have entered a empty string or hit cancel" +
+                    " during the quiz. If you would like to start the quiz over " +
+                    "please hit the start quiz button.";
+    var NameEntered=false;
     /* Gets Users Name */
-    var name = prompt ( "Before we start the quiz, can you pleas tell me" +
-			" your name?" )
-    
-    if ( isNaN(name) ) {
-	statusSwitch = 1;
-	counter = 0;
-    } else if ( name === "" ) {
-	statusSwitch = 4;
-	counter = 4;
-    } else {
-	statusSwitch = 5;
-	counter = 5;
+  while( !NameEntered ) {
+     var name = prompt ( "Before we start the quiz, can you please tell me" +
+        " your name?" );
+     if(isNaN(name)) {
+        NameEntered = true;
+      } else if (( name === "" ) || ( name === null )) {
+        alert(AlertNull);
+        NameEntered = true;
+        return;
+      } else {
+        alert( "That is not a valid name. Please try again" ) ;
+      }
     }
 
-        function question1() {
-	var alertString;
-	var paragraph;
-	
-	var answer1 = prompt("Question 1: Have I ever worked at Jamba Juice?");
-	console.log(answer1)
-	if (answer1.toLowerCase() === "yes" || answer1.toLowerCase() === "y"){
-	    statusSwitch++;
-	    counter++;
-	    alertString = "Correct, I was a pro at making smoothies.";
-	    paragraph = document.getElementById('alert1');
-	    paragraph.innerHTML = alertString;
-	} else if ( answer1.toLowerCase() === "no" ||
-		    answer1.toLowerCase() === "n" ) {
-	    statusSwitch++;
-	    alertString = "Sorry the correct answer was yes. " +
-		          "I am a pro when it comes to making smoothies."
-	    paragraph = document.getElementById('alert1');
-	    paragraph.innerHTML = alertString;
-	} else if ( answer1 === "" ) {
-	    statusSwitch = 4;
-	    counter = 4;
-	} else {
-	    alert("That is not a valid answer. Please enter yes or no");
-	    statusSwitch = 1;
-	}
-	return true;
+   for(ii=0; ii < NumberOfQuestions; ii++) {
+     var paragraph;
+     var ValidAnswer = false;
+     while ( !ValidAnswer ) {
+       UserAnswer[ii] = prompt(questionAsked[ii]);
+       if ( UserAnswer[ii].toLowerCase() === CorrectAnswer[ii] ||
+          UserAnswer[ii].toLowerCase() === AbreviatedCorrectAnswer ) {
+          NumberOfQuestionsCorrect++;
+          paragraph = document.getElementById('alert' + ( ii + 1 ) );
+          paragraph.innerHTML = AlertStringCorrectAnswer[ii];
+          ValidAnswer = true;
+        } else if( UserAnswer[ii].toLowerCase() === WrongAnswer[ii] ||
+           UserAnswer[ii].toLowerCase() === AbreviatedWrongAnswer ) {
+          paragraph = document.getElementById('alert' + ( ii + 1 ) );
+          paragraph.innerHTML = AlertStringWrongAnswer[ii];
+          ValidAnswer = true;
+        } else if (( UserAnswer[ii] === "" ) || ( UserAnswer[ii] === null )) {
+          alert(AlertNull);
+          return;
+        } else {
+          alert("That is not a valid answer, please enter yes or no.");
+        }
+      }
     }
-    
-    function question2() {
-	var alertString;
-	var paragraph;
-	var answer2 = prompt( "Do I know the extension of pi to 50 " +
-			      "decimal places?" );
-	console.log(answer2)
-	if (answer2.toLowerCase() === "yes" || answer2.toLowerCase() === "y"){
-	    statusSwitch++;
-	    alertString = "Unfortunately no, but that would be really cool " +
-		          "if I did. 3.1415 is about as far as I can get.";
-	    paragraph = document.getElementById('alert2');
-	    paragraph.innerHTML = alertString;
-	} else if ( answer2.toLowerCase() === "no" ||
-		    answer2.toLowerCase() === "n") {
-	    statusSwitch++;
-	    counter++;
-	    alertString = "Correct, 3.1415 is about as far as I can get. ";
-	    paragraph = document.getElementById('alert2');
-	    paragraph.innerHTML = alertString;
-	} else if (answer2 === "") {
-	    statusSwitch = 4;
-	    counter = 4;
-	} else {
-	    alert("That is not a valid answer. Please enter yes or no");
-	    statusSwitch = 2;
-	}
-	return true;
+
+    for( jj=0; jj < NumberOfQuestions; jj++ ) {
+      if ( NumberOfQuestionsCorrect === jj ) {
+         var finalparagraph;
+         finalparagraph = document.getElementById('finalalert');
+         finalparagraph.innerHTML = ( "Thanks for playing the quiz " + name + ", you got " +
+     		    NumberOfQuestionsCorrect + " out of " + NumberOfQuestions +" questions correct." );
+      }
     }
-    
-    function question3() {
-	var alertString;
-	var paragraph;
-	var answer3 = prompt("Is there a video of me falling on my face " +
-			     "while dunking a basketball on YouTube?" );
-	console.log(answer3)
-	if (answer3.toLowerCase() === "yes" || answer3.toLowerCase() === "y" ) {
-	    statusSwitch++;
-	    counter++;
-	    alertString = "Correct, if you click on the image below you can " +
-		          "watch the video. Don't worry I was okay.";
-	    paragraph = document.getElementById('alert3');
-	    paragraph.innerHTML = alertString;
-	} else if ( answer3.toLowerCase() === "no" ||
-		    answer3.toLowerCase() === "n") {
-	    statusSwitch++;
-	    alertString = "Unfortunately the answer is yes. If you click on " +
-		          "the image below you can watch the video. Don't " +
-		          "worry I was okay.";
-	    paragraph = document.getElementById('alert3');
-	    paragraph.innerHTML = alertString;
-	} else if (answer3 === "") {
-	    statusSwitch = 4;
-	    counter = 4;
-	} else {
-	    alert("That is not a valid answer. Please enter yes or no");
-	    statusSwitch = 3;
-	}
-	return true;
-    }
-    
-    /* The below while loop stays in while loop until all questions have 
-	 been answered or user presses cancel. */
-    while(statusSwitch < 4){
-	
-	/* The below code does the same if else statement for the 3 questions. 
-	   Asks a question, logs it to the console and tells the user if they 
-	   got the answer correct or not. If they did get it correct, add 1 to 
-	   counter. If the user enters something that is not a string, it will 
-	   ask the question again. If the user presses cancel or enters a empty 
-	   string then it will break out of the while loop.  */
-	
-	if(statusSwitch === 1) {
-	    question1();
-	}
-	
-	if (statusSwitch === 2){
-	    question2();
-	}
-	
-	if (statusSwitch === 3){
-	    question3();
-	}
-    }
-    /*The below switch case statements thanks for user for playing and displays their
-      name along with saying how many answers they got correct out of the 3 questions.
-    */
-    switch ( counter ) {
-    case 0 : alert( "Thanks for playing the quiz " + name + ", you got " +
-		    counter + " out of 3 questions correct." );
-	     break;
-    case 1 : alert( "Thanks for playing the quiz " + name + ", you got " +
-		    counter + " out of 3 questions correct." );
-             break;
-    case 2 : alert( "Thanks for playing the quiz " + name + ", you got " +
-		    counter + " out of 3 questions correct." );
-             break;
-    case 3 : alert( "Thanks for playing the quiz " + name + ", you got " +
-		    counter + " out of 3 questions correct." );
-             break;
-    case 4 : alert( "Looks like you have entered a empty string or hit cancel" +
-		    " during the quiz. If you would like to start the quiz over please" +
-		    " hit the start quiz button again." );
-             break;
-    case 5 : alert( "That is not a valid name, please hit the start quiz" +
-		    " button again." );
-             break;
-    default : alert( "Something is wrong with program. Please Try Again." );
-             break;
-    }    
-}
+ }
