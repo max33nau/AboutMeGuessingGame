@@ -6,13 +6,13 @@ function startquiz() {
     var CorrectAnswer = [ "yes",
                           "no",
                           "yes" ];
-    var AbreviatedCorrectAnswer = [ "y",
+    var shortCorrectAnswer = [ "y",
                                     "n",
                                     "y"];
     var WrongAnswer = [ "no",
                         "yes",
                         "no"];
-    var AbreviatedWrongAnswer = [ "n",
+    var shortWrongAnswer = [ "n",
                                   "y",
                                   "n"];
     var questionAsked = [ "Question 1: Have I ever worked at Jamba Juice?",
@@ -28,15 +28,14 @@ function startquiz() {
                        + "frameborder=\"0\" allowfullscreen></iframe></p>";
     var AlertStringCorrectAnswer = [ imageCorrect + "  Correct, I was a pro at making smoothies.",
                                      imageCorrect + "  Correct, 3.1415 is about as far as I can get. ",
-                                     imageCorrect + "  Correct, if you click on the image below you can " +
-                                     "watch the video. Don't worry I was okay. " + painfulVideo ];
-    
+                                     imageCorrect + "  Correct, you can watch the video below. " +
+                                     "Don't worry I was okay. " + painfulVideo ];
+
     var AlertStringWrongAnswer = [ imageIncorrect + "  Sorry the correct answer was yes. " +
                                    "I am a pro when it comes to making smoothies.",
                                    imageIncorrect + "  I don't actually, 3.1415 is as far as I can get.",
-                                   imageIncorrect + "  Unfortunately the answer is yes. If you click on " +
-                            		   "the image below you can watch the video. Don't " +
-                            		   "worry I was okay. " + painfulVideo ];
+                                   imageIncorrect + "  Unfortunately the answer is yes. You can watch " +
+                                   "the video below." + painfulVideo ];
     var NotValidAnswer = "That is not a valid answer. Please enter yes or no.";
     var AlertNull = "Looks like you have entered a empty string or hit cancel" +
                     " during the quiz. If you would like to start the quiz over " +
@@ -57,23 +56,27 @@ function startquiz() {
       }
     }
 
+
+
+
    for(ii=0; ii < NumberOfQuestions; ii++) {
      var paragraph;
+     var questions;
      var ValidAnswer = false;
      while ( !ValidAnswer ) {
        UserAnswer[ii] = prompt(questionAsked[ii]);
-       if ( UserAnswer[ii].toLowerCase() === CorrectAnswer[ii] ||
-          UserAnswer[ii].toLowerCase() === AbreviatedCorrectAnswer ) {
+       if ( (UserAnswer[ii].toLowerCase() === CorrectAnswer[ii]) ||
+          (UserAnswer[ii].toLowerCase() === shortCorrectAnswer[ii] )) {
           NumberOfQuestionsCorrect++;
           paragraph = document.getElementById('alert' + ( ii + 1 ) );
-	  paragraph.setAttribute("style", "color:green;"); 
-          paragraph.innerHTML = AlertStringCorrectAnswer[ii];
+	        paragraph.setAttribute("style", "color:green;");
+          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>" + AlertStringCorrectAnswer[ii];
           ValidAnswer = true;
-        } else if( UserAnswer[ii].toLowerCase() === WrongAnswer[ii] ||
-           UserAnswer[ii].toLowerCase() === AbreviatedWrongAnswer ) {
+        } else if( (UserAnswer[ii].toLowerCase() === WrongAnswer[ii]) ||
+           (UserAnswer[ii].toLowerCase() === shortWrongAnswer[ii] )) {
           paragraph = document.getElementById('alert' + ( ii + 1 ) );
-	  paragraph.setAttribute("style", "color:red;"); 
-          paragraph.innerHTML = AlertStringWrongAnswer[ii];
+	        paragraph.setAttribute("style", "color:red;");
+          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>" + AlertStringWrongAnswer[ii];
           ValidAnswer = true;
         } else if (( UserAnswer[ii] === "" ) || ( UserAnswer[ii] === null )) {
           alert(AlertNull);

@@ -52,8 +52,16 @@ body {
 
 #PainfulVideo {
   display: block;
+  float: left;
   width: 620px;
   margin: 50px auto 50px;
   height: 420px;
+  border-radius: 5%;
 
+ }
+
+ #finalalert {
+   text-align: center;
+   font-size: 1.5em;
+   margin-top: 200px;
  }
