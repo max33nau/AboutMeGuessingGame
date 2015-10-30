@@ -41,9 +41,10 @@ body {
   text-align: center;
 }
 
-#mainphoto {
+#PainfulVideo {
   display: block;
-  max-width: 300px;
+  width: 620px;
   margin: 50px auto 50px;
-  border-radius: 20px;
+  height: 420px;
+
  }
