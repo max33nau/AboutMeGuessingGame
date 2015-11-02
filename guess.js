@@ -70,13 +70,15 @@ function startquiz() {
           NumberOfQuestionsCorrect++;
           paragraph = document.getElementById('alert' + ( ii + 1 ) );
 	        paragraph.setAttribute("style", "color:green;");
-          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>" + AlertStringCorrectAnswer[ii];
+          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>" + "<p> You Answered: " + UserAnswer[ii] + "</p>" +
+          AlertStringCorrectAnswer[ii];
           ValidAnswer = true;
         } else if( (UserAnswer[ii].toLowerCase() === WrongAnswer[ii]) ||
            (UserAnswer[ii].toLowerCase() === shortWrongAnswer[ii] )) {
           paragraph = document.getElementById('alert' + ( ii + 1 ) );
 	        paragraph.setAttribute("style", "color:red;");
-          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>" + AlertStringWrongAnswer[ii];
+          paragraph.innerHTML = "<p>" + questionAsked[ii] + "</p>"  + "<p> You Answered: " + UserAnswer[ii] + "</p>" +
+          AlertStringWrongAnswer[ii];
           ValidAnswer = true;
         } else if (( UserAnswer[ii] === "" ) || ( UserAnswer[ii] === null )) {
           alert(AlertNull);
